@@ -1,66 +1,114 @@
-**Week 7: Deployment and DevOps for MERN Applications**
+# MERN Blog Platform
 
-**Objective:**
+## Overview
+The **MERN Blog Platform** is a full-stack web application that allows users to create, edit, and publish blog posts. This project is designed to demonstrate best practices in **DevOps**, including version control, CI/CD pipelines, deployment, monitoring, and security considerations.
 
-- Apply DevOps practices to deploy and manage a MERN stack application.
-- Utilize version control, CI/CD pipelines, and cloud hosting platforms.
-- Implement monitoring and logging for application reliability.
+## Features
+- User-friendly blog creation and management.
+- Responsive frontend built with **React**.
+- Backend powered by **Express.js** and **MongoDB**.
+- Automated testing and CI/CD pipelines using **GitHub Actions**.
+- Deployed on **Render (Backend)** and **Vercel (Frontend)**.
+- Monitoring and logging integration.
 
-**Project Suggestion:** Build and deploy a "Personal Blog Platform" where users can create, edit, and publish blog posts. The goal is to focus on deploying and maintaining the application effectively.
+---
 
-**Instructions:**
+## Tech Stack
 
-1. **Project Setup:**
-   - Create a new project folder called `mern-blog-platform`.
-   - Ensure the project includes:
-     - A backend with Express.js and MongoDB.
-     - A frontend built with React.
-   
-2. **Version Control:**
-   - Initialize a Git repository and push code to GitHub.
-   - Use feature branches for new functionalities.
-   - Document a clear commit history.
+### **Frontend**
+- React (Vite for fast development)
+- CSS (Minimal styling)
+- Deployed on **Vercel**
 
-3. **Continuous Integration:**
-   - Set up GitHub Actions for automated testing on every push.
-   - Ensure test cases run before merging changes.
-   - Notify contributors of failed builds.
+### **Backend**
+- Node.js with Express.js
+- MongoDB with Mongoose (Database ORM)
+- Deployed on **Render**
 
-4. **Backend Deployment:**
-   - Deploy the backend using Render.
-   - Configure environment variables securely.
-   - Implement PM2 for process management.
+### **DevOps Tools**
+- **GitHub Actions** (CI/CD automation)
+- **PM2** (Process management for the backend)
+- **Render Logs & Dashboard** (Monitoring)
+- **Sentry** (Frontend error tracking)
+- **Winston & Morgan** (Backend logging)
 
-5. **Frontend Deployment:**
-   - Deploy the frontend on Vercel.
-   - Connect the frontend to the deployed backend API.
-   - Ensure responsiveness and performance optimization.
+---
 
-6. **Error Handling and Monitoring:**
-   - Integrate a logging tool (e.g., Winston, Morgan) for tracking requests.
-   - Implement Sentry for frontend error tracking.
-   - Monitor server logs using Render's dashboard.
+## Project Setup
 
-7. **Security Considerations:**
-   - Use HTTPS for secure communication.
-   - Store sensitive credentials using environment variables.
-   - Implement basic authentication for accessing the admin panel.
+### **1. Clone the Repository**
+```bash
+  git clone https://github.com/yourusername/mern-blog-platform.git
+  cd mern-blog-platform
+```
 
-8. **Documentation:**
-   - Write a `README.md` file that includes:
-     - Project overview.
-     - Steps to install and deploy the application.
-     - Explanation of CI/CD pipeline setup.
-     - Monitoring and security measures.
+### **2. Setup Backend**
+```bash
+  cd backend
+  npm install
+  touch .env   # Add environment variables
+  npm start
+```
+#### **Backend Environment Variables (`.env`)**
+```env
+MONGO_URI=your_mongodb_connection_string
+PORT=5000
+```
 
-9. **Submission:**
-   - Push your code to your GitHub repository.
+### **3. Setup Frontend**
+```bash
+  cd frontend
+  npm install
+  npm run dev  # Runs on http://localhost:5173
+```
 
-**Evaluation Criteria:**
+---
 
-- Successful deployment of both backend and frontend.
-- Proper setup of CI/CD pipelines.
-- Effective use of monitoring and logging tools.
-- Secure handling of environment variables.
-- Clear and structured documentation.
+## Deployment
+
+### **1. Deploy Backend to Render**
+- Push code to GitHub.
+- Create a new **Render Web Service**.
+- Connect the repo and set environment variables.
+- Deploy using the **Deploy Hook** (configured in GitHub Actions).
+
+### **2. Deploy Frontend to Vercel**
+- Install Vercel CLI: `npm install -g vercel`
+- Login: `vercel login`
+- Deploy: `vercel --prod`
+
+---
+
+## **CI/CD Pipelines**
+This project includes GitHub Actions workflows for:
+1. **Backend CI (`.github/workflows/backend-ci.yml`)**
+   - Installs dependencies and runs tests.
+2. **Frontend CI (`.github/workflows/frontend-ci.yml`)**
+   - Ensures frontend builds successfully.
+3. **Backend Deployment (`.github/workflows/backend-deploy.yml`)**
+   - Automatically deploys backend to **Render**.
+4. **Frontend Deployment (`.github/workflows/frontend-deploy.yml`)**
+   - Deploys frontend to **Vercel**.
+
+---
+
+## **Monitoring & Security**
+- **Logging**: Winston & Morgan for backend logs.
+- **Error Tracking**: Sentry for frontend crash reports.
+- **Environment Variables**: Stored securely in **GitHub Secrets**.
+- **HTTPS**: Ensured via **Vercel** and **Render**.
+
+---
+
+## **Contributing**
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-name`).
+3. Commit changes (`git commit -m "Added new feature"`).
+4. Push to GitHub (`git push origin feature-name`).
+5. Submit a pull request.
+
+---
+
+## **License**
+This project is licensed under the **MIT License**.
 
